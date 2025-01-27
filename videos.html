@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Training Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #4CAF50;
+            --background-color: #121212;
+            --text-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .nav-menu {
+            background: #2d2d2d;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            background: #333;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .course-card, .company-card {
+            background: #2d2d2d;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .course-card:hover, .company-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-icon {
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .course-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .youtube-container {
+            margin-top: 30px;
+            display: none;
+        }
+
+        #player {
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .playlist-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .company-courses {
+            display: none;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-laptop-code"></i> Tech Training Hub</h1>
+            <p>Choose your preferred learning method</p>
+        </header>
+
+        <nav class="nav-menu">
+            <button class="nav-button" onclick="showSection('company')">
+                <i class="fas fa-university"></i> Courses
+            </button>
+            <button class="nav-button" onclick="showSection('youtube')">
+                <i class="fab fa-youtube"></i>  Playlists Courses
+            </button>
+        </nav>
+
+        <!-- YouTube Courses Section -->
+        <div id="options" class="courses-grid">
+            <div class="course-card" onclick="loadYouTubePlaylist('PLCn2VC9ANZ7L5YeQPY2dQn95rjsmRLZoN')">
+                <i class="fas fa-microchip course-icon"></i>
+                <div class="course-title">Arduino in Arabic</div>
+                
+            </div>
+            <div class="course-card" onclick="loadYouTubePlaylist('PLnnfwXes8GZA9h1zPpZhskJw14_xRYaWo')">
+                <i class="fas fa-microchip course-icon"></i>
+                <div class="course-title">awesome Arduino beginner projects</div>
+                
+            </div>
+
+            <div class="course-card" onclick="loadYouTubePlaylist('PLUKyI8ySgdwqy2v3zdoM-hW0BttOQXd3I')">
+                <i class="fab fa-python course-icon"></i>
+                <div class="course-title">Arduino Projects </div>
+                
+            </div>
+
+            <div class="course-card" onclick="loadYouTubePlaylist('PLyFZcaV5gFi6DIY2Pmzb3aiM-zBnJRqDq')">
+                <i class="fab fa-js course-icon"></i>
+                <div class="course-title">مشاريع اردوينو </div>
+               
+            </div>
+            <div class="course-card" onclick="loadYouTubePlaylist('PLKASro0L7R2XA4I8bJpARx9vq9hSyos7l')">
+                <i class="fab fa-js course-icon"></i>
+                <div class="course-title">Arduino Projects | Full Tutorial  </div>
+               
+            </div>
+            <div class="course-card" onclick="loadYouTubePlaylist('PLPJQlEokVM70zzWCbuYa3Uee2wAfIWgS9')">
+                <i class="fab fa-js course-icon"></i>
+                <div class="course-title">Arduino Projects
+                </div>
+               
+            </div>
+        </div>
+
+        <!-- Company Courses Section -->
+        <div id="company-courses" class="company-courses">
+            <div class="company-card" onclick="window.open('https://www.udemy.com/course/arduinolearning/?couponCode=LETSLEARNNOW', '_blank')">
+                <i class="fas fa-university course-icon"></i>
+                <div class="course-title">Arduino Fundamentals (Udemy)</div>
+                
+            </div>
+
+            <div class="company-card" onclick="window.open('https://www.coursera.org/learn/arduino-platform', '_blank')">
+                <i class="fas fa-graduation-cap course-icon"></i>
+                <div class="course-title">Arduino Platform (Coursera)</div>
+                
+            </div>
+
+            <div class="company-card" onclick="window.open('https://www.coursera.org/learn/interface-with-arduino', '_blank')">
+                <i class="fas fa-microchip course-icon"></i>
+                <div class="course-title">Arduino Interfaces (Coursera)</div>
+                
+            </div>
+
+            <div class="company-card" onclick="window.open('https://www.coursera.org/specializations/iot', '_blank')">
+                <i class="fas fa-wifi course-icon"></i>
+                <div class="course-title">IoT Specialization (Coursera)</div>
+                
+            </div>
+
+            <div class="company-card" onclick="window.open('https://www.udemy.com/course/arduino-beginner-small-projects-simulated-using-proteus/?couponCode=LETSLEARNNOW', '_blank')">
+                <i class="fas fa-project-diagram course-icon"></i>
+                <div class="course-title">Arduino Projects (Udemy)</div>
+                
+            </div>
+
+            <div class="company-card" onclick="window.open('https://www.udemy.com/course/arduinoworkshop/', '_blank')">
+                <i class="fas fa-tools course-icon"></i>
+                <div class="course-title">Arduino Workshop (Udemy)</div>
+                
+            </div>
+        </div>
+
+        <!-- YouTube Player Section -->
+        <div id="youtube-section" class="youtube-container">
+            <button class="playlist-button" onclick="showOptions()">
+                <i class="fas fa-arrow-left"></i> Back to Courses
+            </button>
+            <div id="player"></div>
+        </div>
+    </div>
+
+    <script>
+        const playlists = {
+            "PLnnfwXes8GZA9h1zPpZhskJw14_xRYaWo": 'Complete Arduino Course',
+            "PLyFZcaV5gFi6DIY2Pmzb3aiM-zBnJRqDq": 'Python Programming',
+            "PLWKjhJtqVAbnA7UFG5FsxtPsv2MRXY3h2": 'JavaScript Mastery'
+        };
+
+        let player;
+        let isPlayerReady = false;
+        let currentPlaylistId = null;
+
+        function showSection(section) {
+            if(section === 'company') {
+                document.getElementById('options').style.display = 'none';
+                document.getElementById('youtube-section').style.display = 'none';
+                document.getElementById('company-courses').style.display = 'grid';
+            } else if(section === 'youtube') {
+                document.getElementById('options').style.display = 'grid';
+                document.getElementById('youtube-section').style.display = 'none';
+                document.getElementById('company-courses').style.display = 'none';
+                initYouTubePlayer();
+            }
+        }
+
+        function showOptions() {
+            if(player) {
+                player.destroy();
+                document.getElementById('player').innerHTML = '';
+                isPlayerReady = false;
+            }
+            document.getElementById('youtube-section').style.display = 'none';
+            document.getElementById('company-courses').style.display = 'none';
+            document.getElementById('options').style.display = 'grid';
+        }
+
+        function initYouTubePlayer() {
+            if (!document.getElementById('youtube-api')) {
+                const tag = document.createElement('script');
+                tag.src = "https://www.youtube.com/iframe_api";
+                tag.id = "youtube-api";
+                document.body.appendChild(tag);
+            }
+        }
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('player', {
+                height: '500',
+                width: '100%',
+                playerVars: {
+                    modestbranding: 1,
+                    rel: 0
+                },
+                events: {
+                    'onReady': () => {
+                        isPlayerReady = true;
+                        if (currentPlaylistId) {
+                            player.loadPlaylist({
+                                listType: 'playlist',
+                                list: currentPlaylistId,
+                                index: 0
+                            });
+                        }
+                    },
+                    'onStateChange': (event) => {
+                        if(event.data === YT.PlayerState.ENDED) {
+                            player.playVideoAt(0);
+                        }
+                    }
+                }
+            });
+        }
+
+        function loadYouTubePlaylist(playlistId) {
+            currentPlaylistId = playlistId;
+            
+            if (player && isPlayerReady) {
+                player.destroy();
+                isPlayerReady = false;
+            }
+
+            if (!isPlayerReady) {
+                onYouTubeIframeAPIReady();
+            }
+
+            document.getElementById('options').style.display = 'none';
+            document.getElementById('youtube-section').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
